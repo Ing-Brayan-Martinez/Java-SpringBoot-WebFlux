@@ -1,0 +1,12 @@
+TRUNCATE "order";
+INSERT INTO "order" VALUES (DEFAULT, 1000, now(), 10, 'My Order Sales', now());
+INSERT INTO "order" VALUES (DEFAULT, 1000, now(), 10, 'My Order Sales', now());
+INSERT INTO "order" VALUES (DEFAULT, 1000, now(), 10, 'My Order Sales', now());
+INSERT INTO "order" VALUES (DEFAULT, 1000, now(), 10, 'My Order Sales', now());
+INSERT INTO "order" VALUES (DEFAULT, 1000, now(), 10, 'My Order Sales', now());
+INSERT INTO "order" VALUES (DEFAULT, 1000, now(), 10, 'My Order Sales', now());
+INSERT INTO "order" VALUES (DEFAULT, 1000, now(), 10, 'My Order Sales', now());
+INSERT INTO "order" VALUES (DEFAULT, 1000, now(), 10, 'My Order Sales', now());
+INSERT INTO "order" VALUES (DEFAULT, 1000, now(), 10, 'My Order Sales', now());
+INSERT INTO "order" VALUES (DEFAULT, 1000, now(), 10, 'My Order Sales', now());
+INSERT INTO "order" VALUES (DEFAULT, 1000, now(), 10, 'My Order Sales', now());
