@@ -3,11 +3,24 @@ docker network ls
 
 docker network inspect
 
-#para lanzar la base de datos
+#para lanzar la base de datos postgresql
 docker pull postgres:14
 
 docker run -d -p 5432:5432 --hostname postgresql --network bridge \
      -e POSTGRES_PASSWORD=postgres --name postgresql postgres:14
+
+docker exec -it postgresql bash
+
+#para lanzar la base de datos sql server
+docker pull mcr.microsoft.com/mssql/server:2019-latest
+
+docker run -d -p 1433:1433 --hostname mssql-server --network bridge \
+-e "ACCEPT_EULA=Y" -e "SA_PASSWORD=123456" -e "MSSQL_PID=Express" \
+ --name mssql-server mcr.microsoft.com/mssql/server:2019-latest
+
+docker exec -it mssql-server bash
+
+docker exec -it mssql-server /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 123456
 
 #para construir la imagen
 docker build . --tag java-springboot-webflux:0.1

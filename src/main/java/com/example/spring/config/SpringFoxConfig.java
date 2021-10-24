@@ -1,5 +1,6 @@
 package com.example.spring.config;
 
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -12,6 +13,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
+@EnableAutoConfiguration
 @Import(SpringDataRestConfiguration.class)
 public class SpringFoxConfig {
 

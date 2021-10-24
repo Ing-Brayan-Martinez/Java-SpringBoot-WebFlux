@@ -4,15 +4,11 @@ import com.example.spring.domain.Order;
 import com.example.spring.repository.OrderRepository;
 import com.example.spring.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
-@CacheConfig(cacheNames = {"orderCache"})
 public class OrderServiceImpl implements OrderService {
 
     /**
@@ -34,7 +30,6 @@ public class OrderServiceImpl implements OrderService {
      * @return Retorna una lista órdenes
      */
     @Override
-    @CacheEvict(value = "orderCache", allEntries = true)
     public Flux<Order> findAllOrders() {
         return orderRepository.findAll();
     }
@@ -45,7 +40,6 @@ public class OrderServiceImpl implements OrderService {
      * @return Retorna la orden encontrada
      */
     @Override
-    @CachePut(value = "orderCache")
     public Mono<Order> findOrderById(Long id) {
         return orderRepository.findById(id);
     }
