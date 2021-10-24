@@ -15,12 +15,12 @@ docker exec -it postgresql bash
 docker pull mcr.microsoft.com/mssql/server:2019-latest
 
 docker run -d -p 1433:1433 --hostname mssql-server --network bridge \
--e "ACCEPT_EULA=Y" -e "SA_PASSWORD=123456" -e "MSSQL_PID=Express" \
+-e "ACCEPT_EULA=Y" -e "SA_PASSWORD=Br88##ss" -e "MSSQL_PID=Express" \
  --name mssql-server mcr.microsoft.com/mssql/server:2019-latest
 
 docker exec -it mssql-server bash
 
-docker exec -it mssql-server /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 123456
+docker exec -it mssql-server /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P Br88##ss
 
 #para construir la imagen
 docker build . --tag java-springboot-webflux:0.1
