@@ -1,0 +1,16 @@
+server:
+  port: 8080
+
+spring:
+
+  application:
+    name: Java-SpringBoot-WebFlux
+
+  r2dbc:
+    url: r2dbc:postgresql://localhost/demo
+    username: postgres
+    password: postgres
+
+
+
+
