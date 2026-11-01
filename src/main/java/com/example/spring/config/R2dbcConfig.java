@@ -9,29 +9,37 @@ import org.springframework.r2dbc.connection.init.CompositeDatabasePopulator;
 import org.springframework.r2dbc.connection.init.ConnectionFactoryInitializer;
 import org.springframework.r2dbc.connection.init.ResourceDatabasePopulator;
 
+/**
+ * Configuración de R2DBC y populador de la base de datos.
+ */
 @Configuration
 @EnableAutoConfiguration
 public class R2dbcConfig {
 
     /**
      * Configurar la creacion de las tablas.
-     * @param connectionFactory Conceccion de la base de datos.
+     * @param factory Conceccion de la base de datos.
      * @return Retorna la configuracion
      */
     @Bean
-    public ConnectionFactoryInitializer populator(ConnectionFactory connectionFactory) {
+    public ConnectionFactoryInitializer populator(
+            final ConnectionFactory factory) {
 
-        ConnectionFactoryInitializer initializer = new ConnectionFactoryInitializer();
-        initializer.setConnectionFactory(connectionFactory);
+        ConnectionFactoryInitializer initializer =
+                new ConnectionFactoryInitializer();
+        initializer.setConnectionFactory(factory);
 
-        CompositeDatabasePopulator populator = new CompositeDatabasePopulator();
-        populator.addPopulators(new ResourceDatabasePopulator(new ClassPathResource("schema.sql")));
-        populator.addPopulators(new ResourceDatabasePopulator(new ClassPathResource("data.sql")));
+        CompositeDatabasePopulator populator =
+                new CompositeDatabasePopulator();
+        populator.addPopulators(
+                new ResourceDatabasePopulator(
+                        new ClassPathResource("schema.sql")));
+        populator.addPopulators(
+                new ResourceDatabasePopulator(
+                        new ClassPathResource("data.sql")));
         initializer.setDatabasePopulator(populator);
 
         return initializer;
     }
-
-
 
 }

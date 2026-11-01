@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 
+/**
+ * Controlador REST para ordenes.
+ */
 @RestController
 @RequestMapping("/api/v1")
 public final class OrderController {
@@ -15,15 +18,15 @@ public final class OrderController {
     /**
      * Variable que almacena un servicio.
      */
-    private OrderService orderService;
+    private final OrderService orderService;
 
     /**
      * Consructor de esta clase.
-     * @param orderService Servicio de ordenes.
+     * @param service Servicio de ordenes.
      */
     @Autowired
-    public OrderController(OrderService orderService) {
-        this.orderService = orderService;
+    public OrderController(final OrderService service) {
+        this.orderService = service;
     }
 
     /**

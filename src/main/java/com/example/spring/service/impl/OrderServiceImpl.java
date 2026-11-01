@@ -8,21 +8,24 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+/**
+ * Implementación del servicio de órdenes.
+ */
 @Service
 public class OrderServiceImpl implements OrderService {
 
     /**
      * Variable que almacena el repositorio de ordenes.
      */
-    private OrderRepository orderRepository;
+    private final OrderRepository orderRepository;
 
     /**
      * Consructor de esta clase.
-     * @param orderRepository Repositorio de ordenes.
+     * @param repo Repositorio de ordenes.
      */
     @Autowired
-    public OrderServiceImpl(OrderRepository orderRepository) {
-        this.orderRepository = orderRepository;
+    public OrderServiceImpl(final OrderRepository repo) {
+        this.orderRepository = repo;
     }
 
     /**
@@ -40,7 +43,7 @@ public class OrderServiceImpl implements OrderService {
      * @return Retorna la orden encontrada
      */
     @Override
-    public Mono<Order> findOrderById(Long id) {
+    public Mono<Order> findOrderById(final Long id) {
         return orderRepository.findById(id);
     }
 
@@ -50,7 +53,7 @@ public class OrderServiceImpl implements OrderService {
      * @return Retorna la orden encontrada
      */
     @Override
-    public Mono<Order> save(Order order) {
+    public Mono<Order> save(final Order order) {
         return orderRepository.save(order);
     }
 
@@ -60,7 +63,7 @@ public class OrderServiceImpl implements OrderService {
      * @return Retorna la orden encontrada
      */
     @Override
-    public Mono<Order> edit(Order order) {
+    public Mono<Order> edit(final Order order) {
         return orderRepository.findById(order.getOrderId())
         .switchIfEmpty(Mono.empty())
         .flatMap(origin -> {
@@ -77,9 +80,7 @@ public class OrderServiceImpl implements OrderService {
      * @return Retorna la orden encontrada
      */
     @Override
-    public Mono<Void> delete(Long id) {
+    public Mono<Void> delete(final Long id) {
         return orderRepository.deleteById(id);
     }
 }
-
-
