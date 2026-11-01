@@ -8,6 +8,20 @@ Este documento define el stack tecnológico, la arquitectura reactiva, los patro
 
 El proyecto está diseñado bajo una **Arquitectura Reactiva de Extremo a Extremo (End-to-End Reactive Architecture)**, totalmente no bloqueante.
 
+---
+
+## Project Skills & Knowledge Base
+
+Este proyecto utiliza un sistema modular de "Skills" ubicado en [.agents/skills/](.agents/skills/). Estos documentos contienen guías especializadas y patrones para tareas específicas del proyecto.
+
+**El agente DEBE seguir este protocolo:**
+
+1. **Discovery**: Consultar `.agents/skills/` para identificar documentación relevante.
+2. **Activation**: Leer el archivo `SKILL.md` de las skills relevantes:
+   - [Contenedorización con Docker](.agents/skills/spring-implements-docker/SKILL.md) (`spring-implements-docker`)
+   - [Configuración de Maven](.agents/skills/spring-implements-maven/SKILL.md) (`spring-implements-maven`)
+3. **Compliance**: Aplicar los patrones definidos en la skill correspondiente.
+
 | Categórica | Tecnología / Librería | Versión / Detalle |
 | :--- | :--- | :--- |
 | **Lenguaje & Runtime** | Java 17 | JDK 17 con `--enable-preview` en compilación y ejecución |
