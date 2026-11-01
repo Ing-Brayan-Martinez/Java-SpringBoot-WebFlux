@@ -141,12 +141,11 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>3.16.0</version>
                 <configuration>
                     <source>${jdk.version}</source>
                     <target>${jdk.version}</target>
                     <encoding>${encoding}</encoding>
-                    <compilerArgs>--enable-preview</compilerArgs>
                     <annotationProcessorPaths>
                         <path>
                             <groupId>org.projectlombok</groupId>
@@ -169,7 +168,6 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M5</version>
                 <configuration>
-                    <argLine>--enable-preview</argLine>
                     <skip>true</skip>
                 </configuration>
             </plugin>
@@ -202,7 +200,6 @@
                         <configuration>
                             <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
                             <additionalJOptions>
-                                <additionalJOption>--enable-preview</additionalJOption>
                                 <additionalJOption>--release=${jdk.version}</additionalJOption>
                             </additionalJOptions>
                         </configuration>

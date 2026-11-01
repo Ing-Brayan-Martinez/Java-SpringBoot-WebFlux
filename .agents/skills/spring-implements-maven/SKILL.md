@@ -1,6 +1,6 @@
 ---
 name: spring-implements-maven
-description: Guía paso a paso para configurar y generar el archivo pom.xml exacto en proyectos Spring Boot WebFlux con Maven. Incluye la plantilla XML completa con todos sus comentarios de sección, propiedades, dependencias organizadas y plugins de compilación (Checkstyle, Java 17 Preview, Lombok, MapStruct, Surefire, Javadoc, Source y Spring Boot). Usar al crear, restaurar o modificar el archivo pom.xml.
+description: Guía paso a paso para configurar y generar el archivo pom.xml exacto en proyectos Spring Boot WebFlux con Maven. Incluye la plantilla XML completa con todos sus comentarios de sección, propiedades, dependencias organizadas y plugins de compilación (Checkstyle, Lombok, MapStruct, Surefire, Javadoc, Source y Spring Boot). Usar al crear, restaurar o modificar el archivo pom.xml.
 ---
 
 # Guía de Configuración y Estructura Exacta de Maven (`pom.xml`)
@@ -174,12 +174,11 @@ A continuación se presenta el contenido íntegro y exacto del archivo `pom.xml`
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>3.16.0</version>
                 <configuration>
                     <source>${jdk.version}</source>
                     <target>${jdk.version}</target>
                     <encoding>${encoding}</encoding>
-                    <compilerArgs>--enable-preview</compilerArgs>
                     <annotationProcessorPaths>
                         <path>
                             <groupId>org.projectlombok</groupId>
@@ -202,7 +201,6 @@ A continuación se presenta el contenido íntegro y exacto del archivo `pom.xml`
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M5</version>
                 <configuration>
-                    <argLine>--enable-preview</argLine>
                     <skip>true</skip>
                 </configuration>
             </plugin>
@@ -235,7 +233,6 @@ A continuación se presenta el contenido íntegro y exacto del archivo `pom.xml`
                         <configuration>
                             <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
                             <additionalJOptions>
-                                <additionalJOption>--enable-preview</additionalJOption>
                                 <additionalJOption>--release=${jdk.version}</additionalJOption>
                             </additionalJOptions>
                         </configuration>
@@ -304,10 +301,10 @@ Las dependencias se agrupan en 7 bloques claramente demarcados por comentarios:
 ### 4. Plugins de Compilación y Calidad (`<build><plugins>`)
 Los plugins están organizados en 7 bloques correspondientes a las fases del ciclo de vida:
 1. `<!-- ========== Validate ========== -->`: `maven-checkstyle-plugin` (3.1.2) enlazado a la fase `validate` con Checkstyle `8.42` y configuración `checkstyle.xml`.
-2. `<!-- ========== Compiler ========== -->`: `maven-compiler-plugin` (3.8.1) configurado con `--enable-preview`, Java 17 y `annotationProcessorPaths` para Lombok y MapStruct.
-3. `<!-- ========== Surefire ========== -->`: `maven-surefire-plugin` (3.0.0-M5) con `--enable-preview`.
+2. `<!-- ========== Compiler ========== -->`: `maven-compiler-plugin` (3.16.0) configurado con Java 17 y `annotationProcessorPaths` para Lombok y MapStruct.
+3. `<!-- ========== Surefire ========== -->`: `maven-surefire-plugin` (3.0.0-M5).
 4. `<!-- ========== Jar ========== -->`: `maven-jar-plugin` (3.2.0) para empaquetado JAR estándar.
-5. `<!-- ========== Javadoc ========== -->`: `maven-javadoc-plugin` (3.2.0) con `--enable-preview` y `--release=17`.
+5. `<!-- ========== Javadoc ========== -->`: `maven-javadoc-plugin` (3.2.0) con `--release=17`.
 6. `<!-- ========== Source ========== -->`: `maven-source-plugin` (3.2.1) para adjuntar código fuente.
 7. `<!-- ========== Spring ========== -->`: `spring-boot-maven-plugin` (2.5.4) para fat-JAR ejecutable.
 
